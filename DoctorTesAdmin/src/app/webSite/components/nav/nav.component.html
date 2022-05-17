@@ -1,0 +1,81 @@
+<mat-toolbar class="show-mobile">
+
+    <button (click)="toggerMenu()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+
+    <div class="side-menu" [class.active]="activeMenu">
+        <button (click)="toggerMenu()">closed</button>
+        <ul>
+            <li><a routerLink="home">All</a></li>
+            <li><a href="">Nosotros</a></li>
+            <li><a href="">contacto</a></li>
+        </ul>
+
+    </div>
+
+    <!-- <button mat-button [matMenuTriggerFor]="aboveMenu">Above</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+
+    <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu> -->
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>shopping_cart</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-toolbar class="hide-mobile">
+    <span>My App</span>
+    <button mat-button routerLink="home">Home</button>
+    <!-- <mat-menu #aboveMenu="matMenu" yPosition="above">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu> -->
+
+   <!--  <button mat-button [matMenuTriggerFor]="belowMenu">Categories</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button *ngFor="let item of categories" routerLinkActive="active" [routerLink]="['/category', item.id]"
+            mat-menu-item>{{item.name}}</button>
+    </mat-menu> -->
+
+    <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+
+    <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+    <span class="example-spacer"></span>
+    <button *ngIf="!token ; else elseBlock" routerLink="login">Login</button>
+    <ng-template #elseBlock> {{profile?.email}}</ng-template>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>shopping_cart</mat-icon>
+        <span class="counter">{{ counter }}</span>
+    </button>
+</mat-toolbar>

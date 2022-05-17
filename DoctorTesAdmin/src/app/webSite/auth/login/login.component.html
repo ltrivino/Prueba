@@ -1,0 +1,47 @@
+<div class="fondo">
+    <mat-card class="mat-elevation-z8 login-card">
+
+        <!-- <img class="login-logo-principal" src="assets/img/ONTIME_2.png"> -->
+
+        <mat-card-subtitle class="card-subtitle">
+            BIENVENIDO
+        </mat-card-subtitle>
+        <form [formGroup]="form" class="login-form-principal">
+
+            <mat-form-field class="mat-form-field-princial" appearance="outline" color="primary">
+                <mat-label>Correo</mat-label>
+                <input type="email" autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" matInput formControlName="userName">
+               <!--  <input type="email" autocomplete="off" matInput formControlName="userName"> -->
+            </mat-form-field>
+
+            <mat-form-field class="mat-form-field-princial" appearance="outline" color="primary">
+                <mat-label>Clave</mat-label>
+                <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon class="eye">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <div class="col-sm-12 col-xs-12" style="margin-top: 18px;">
+                <a [routerLink]="['/forgot']" class="text-color forgot-password-link">¿Olvidó su
+                    contraseña?</a>
+            </div>
+
+            <div class="contenedor-botones">
+                <!-- <button [routerLink]="['/registro-usuario']" class="boton-Opciones crear" mat-flat-button type="submit"
+            title="Crear un usuario nuevo" color="primary" [disabled]="form.invalid">
+            Crear
+          </button> -->
+
+                <button class="boton-Opciones boton-ingresar" mat-flat-button type="submit" (click)="loginSistema()"
+                    color="primary" title="Ingresar con un usuario ya creado" [disabled]="form.invalid">
+                    Ingresar
+                </button>
+
+            </div>
+        </form>
+
+    </mat-card>
+
+</div>
