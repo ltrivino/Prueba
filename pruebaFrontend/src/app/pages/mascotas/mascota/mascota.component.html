@@ -1,0 +1,54 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-card-title class="titulo">Actualizar Mascota {{nombre}}</mat-card-title>
+            <div class="row contenedor-row">
+                <div class="col-sm-12">
+
+                    <label class="etiqueta">Nombre mascota: </label>
+                    <input type="text" [(ngModel)]="nombre" autocapitalize="sentences" formControlName="nombre"
+                        class="form-control " name="nombre">
+
+
+                    <div class="col-sm-12">
+
+                        <label class="etiqueta">Imagen: </label>
+                        <input type="text" [(ngModel)]="imagen" autocapitalize="sentences" formControlName="imagen"
+                            class="form-control " name="imagen">
+
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label class="etiqueta">Nombre Propetario: </label>
+                        <input type="text" [(ngModel)]="nombreProp" autocapitalize="sentences"
+                            formControlName="nombreProp" class="form-control " name="nombreProp">
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label class="etiqueta">Raza:</label>
+                        <input type="text" [(ngModel)]="raza" autocapitalize="sentences" formControlName="raza"
+                            class="form-control " name="raza">
+                    </div>
+                    <div class="col-sm-12">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="contenedor-botones">
+
+                <!--  <button *ngIf="hide2" [ngClass]="{'button': true, 'is-success': true, 'is-large': true}"
+                    class="boton-Opciones button-editar" mat-flat-button type="submit" (click)="HabilitarInput()"
+                    color="primary">
+                    Verificar
+                </button> -->
+                <button  [disabled]="!form.valid" class="boton-Opciones button-guardar" mat-flat-button (click)=UpdateDatos() type="submit"
+                    color="primary">
+                    Actualizar
+                </button>
+
+            </div>
+        </form>
+
+    </mat-card-content>
+</mat-card>

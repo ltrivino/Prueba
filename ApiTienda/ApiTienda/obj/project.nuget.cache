@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vxUtT3MBKiee0D/HMVHlLrPqoRNVmVdDkA0UfHI6BItPyIOJqyGSlN04jwin31QPQmmCUwfa4T8+9+XEsLVaHQ==",
+  "dgSpecHash": "xU3ak0Iux8RjQchIYFKT1oHRK13g8xGgCWkC+92aYYLOTtVhOgYSG0p3fBuWAZfStArdeZCU3aFlk4NpLlJA+g==",
   "success": true,
-  "projectFilePath": "D:\\Prueba\\ApiTienda\\ApiTienda\\ApiTienda.csproj",
+  "projectFilePath": "D:\\Prueba\\Prueba\\ApiTienda\\ApiTienda\\ApiTienda.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leonel\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Leonel\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.25\\microsoft.aspnetcore.authentication.jwtbearer.3.1.25.nupkg.sha512",

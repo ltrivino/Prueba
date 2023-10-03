@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpStatusCode } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, catchError, throwError, } from 'rxjs';
+import { BehaviorSubject, catchError, of, throwError, } from 'rxjs';
 import { Producto } from '../models/producto';
 
 @Injectable({
@@ -21,6 +21,32 @@ export class ProductsService {
 
   getAllProducts() {
     return this.http.get<Producto[]>(`${this.URI}/producto`)
+      .pipe(
+        catchError(error => of([{
+          id: 2,
+          imagen: '',
+          descripcion: 'prueba',
+          detalle: '',
+          estado: true,
+          precio: 40
+        },
+        {
+          id: 2,
+          imagen: '',
+          descripcion: 'prueba',
+          detalle: '',
+          estado: true,
+          precio: 40
+        },
+        {
+          id: 2,
+          imagen: '',
+          descripcion: 'prueba',
+          detalle: '',
+          estado: true,
+          precio: 40
+        }]))
+      )
   }
 
 

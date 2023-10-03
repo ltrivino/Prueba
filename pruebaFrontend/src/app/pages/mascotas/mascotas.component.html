@@ -1,0 +1,142 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-card-title class="titulo">Crear Mascota</mat-card-title>
+            <div class="row contenedor-row">
+                <div class="col-sm-12">
+
+                    <label class="etiqueta">Nombre mascota: </label>
+                    <input type="text" [(ngModel)]="nombre" autocapitalize="sentences" formControlName="nombre"
+                        class="form-control " name="nombre">
+
+
+                    <div class="col-sm-12">
+
+                        <label class="etiqueta">Imagen: </label>
+                        <input type="text" [(ngModel)]="imagen" autocapitalize="sentences" formControlName="imagen"
+                            class="form-control " name="imagen">
+
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label class="etiqueta">Nombre Propetario: </label>
+                        <input type="text" [(ngModel)]="nombreProp" autocapitalize="sentences"
+                            formControlName="nombreProp" class="form-control " name="nombreProp">
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label class="etiqueta">Raza:</label>
+                        <input type="text" [(ngModel)]="raza" autocapitalize="sentences" formControlName="raza"
+                            class="form-control " name="raza">
+                    </div>
+                    <div class="col-sm-12">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="contenedor-botones">
+
+                <!--  <button *ngIf="hide2" [ngClass]="{'button': true, 'is-success': true, 'is-large': true}"
+                    class="boton-Opciones button-editar" mat-flat-button type="submit" (click)="HabilitarInput()"
+                    color="primary">
+                    Verificar
+                </button> -->
+                <button [disabled]="!form.valid" class="boton-Opciones button-guardar" mat-flat-button
+                    (click)=GuardarDatos() type="submit" color="primary">
+                    Guardar
+                </button>
+
+            </div>
+        </form>
+
+    </mat-card-content>
+</mat-card>
+
+
+<mat-card>
+
+
+    <mat-form-field class="buscar" appearance="outline">
+        <mat-label>Buscar</mat-label>
+
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por mascotas" #input>
+    </mat-form-field>
+
+
+
+    <div class="example-container">
+
+        <div class="example-table-container">
+
+
+            <table mat-table [dataSource]="dataSource" matSort class="example-table">
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Id </th>
+                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="imagen">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Foto </th>
+                    <td mat-cell *matCellDef="let row"> <img src={{row.imagen}} height="60px" width="60px"
+                            style="border-radius: 30px;"> </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Nombre </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="nombreProp">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Nombre Dueño </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombreProp}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="raza">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Raza </th>
+                    <td mat-cell *matCellDef="let row"> {{row.raza}}</td>
+                </ng-container>
+
+
+                <!-- <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Estado </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-slide-toggle [(ngModel)]="row.status" (toggleChange)="ConfirmarCambioStatus(row)">
+                        </mat-slide-toggle>
+                    </td>
+                </ng-container>
+ -->
+
+                <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef class="title-tabla"> Acción </th>
+                    <td mat-cell *matCellDef="let row; let i = index">
+                        <mat-icon class="cursor" title="Editar Ingrediente" style="color: rgb(196, 184, 24);"
+                            [routerLink]="['/mascota', row.id]">edit</mat-icon>
+                        <mat-icon class="cursor" (click)="ConfirmarDelete(row.id)" style="color: crimson;">
+                            delete_forever
+                        </mat-icon>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
+
+            <mat-paginator [length]="mascotas.length" [pageSize]="pageSize" aria-label="Select page of users">
+            </mat-paginator>
+        </div>
+
+    </div>
+
+
+
+</mat-card>

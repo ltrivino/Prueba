@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ApiTienda.Migrations
 {
-    public partial class SistemaUsuarios : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,22 +47,19 @@ namespace ApiTienda.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Planes",
+                name: "Mascotas",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    icono = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    description = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
-                    valor = table.Column<int>(type: "int", nullable: false),
-                    frecuencia = table.Column<int>(type: "int", nullable: false),
-                    codigo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    plan = table.Column<int>(type: "int", nullable: false)
+                    nombre = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    imagen = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    nombreProp = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    raza = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Planes", x => x.Id);
+                    table.PrimaryKey("PK_Mascotas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -172,7 +169,7 @@ namespace ApiTienda.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Productos",
+                name: "Citas",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -181,16 +178,17 @@ namespace ApiTienda.Migrations
                     precio = table.Column<double>(type: "float", maxLength: 50, nullable: false),
                     imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     detalle = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
-                    estado = table.Column<bool>(type: "bit", nullable: false),
-                    PlanesId = table.Column<int>(type: "int", nullable: true)
+                    MascotaId = table.Column<int>(type: "int", nullable: false),
+                    mascotasId = table.Column<int>(type: "int", nullable: true),
+                    estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Productos", x => x.Id);
+                    table.PrimaryKey("PK_Citas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Productos_Planes_PlanesId",
-                        column: x => x.PlanesId,
-                        principalTable: "Planes",
+                        name: "FK_Citas_Mascotas_mascotasId",
+                        column: x => x.mascotasId,
+                        principalTable: "Mascotas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -235,9 +233,9 @@ namespace ApiTienda.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Productos_PlanesId",
-                table: "Productos",
-                column: "PlanesId");
+                name: "IX_Citas_mascotasId",
+                table: "Citas",
+                column: "mascotasId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -258,7 +256,7 @@ namespace ApiTienda.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Productos");
+                name: "Citas");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -267,7 +265,7 @@ namespace ApiTienda.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Planes");
+                name: "Mascotas");
         }
     }
 }

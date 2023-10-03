@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-card-title class="titulo">Actualizar Cita</mat-card-title>
+            <div class="row contenedor-row">
+                <div class="col-sm-12">
+
+                    <label class="etiqueta"> Detalle </label>
+                    <input type="text" [(ngModel)]="detalle" autocapitalize="sentences" formControlName="detalle"
+                        class="form-control " name="detalle">
+
+
+                    <div class="col-sm-12">
+
+                        <label class="etiqueta">Imagen: </label>
+                        <input type="text" [(ngModel)]="imagen" autocapitalize="sentences" formControlName="imagen"
+                            class="form-control " name="imagen">
+
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label class="etiqueta">Descripción</label>
+                        <input type="text" [(ngModel)]="descripcion" autocapitalize="sentences"
+                            formControlName="descripcion" class="form-control " name="descripcion">
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label class="etiqueta">Precio</label>
+                        <input type="number" [(ngModel)]="precio" autocapitalize="sentences" formControlName="precio"
+                            class="form-control " name="precio">
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label class="etiqueta">Mascota:</label>
+
+                        <mat-select formControlName="estado" class="form-control " [(value)]="selecteMascota">
+                            <mat-option *ngFor="let item of datosMascotas" style="text-align: center;"
+                                value={{item.id}}>{{item.nombre}}</mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col-sm-12">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="contenedor-botones">
+
+                <!--  <button *ngIf="hide2" [ngClass]="{'button': true, 'is-success': true, 'is-large': true}"
+                    class="boton-Opciones button-editar" mat-flat-button type="submit" (click)="HabilitarInput()"
+                    color="primary">
+                    Verificar
+                </button> [disabled]="!form.valid" -->
+                <button class="boton-Opciones button-guardar" mat-flat-button (click)=GuardarDatos() type="submit"
+                    color="primary">
+                    Guardar
+                </button>
+
+            </div>
+        </form>
+
+    </mat-card-content>
+</mat-card>

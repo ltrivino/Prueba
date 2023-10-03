@@ -19,50 +19,14 @@ namespace ApiTienda.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("ApiTienda.Entidades.Planes", b =>
+            modelBuilder.Entity("ApiTienda.Entidades.Citas", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("codigo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("description")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<int>("frecuencia")
-                        .HasColumnType("int");
-
-                    b.Property<string>("icono")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("nombre")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("plan")
-                        .HasColumnType("int");
-
-                    b.Property<int>("valor")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Planes");
-                });
-
-            modelBuilder.Entity("ApiTienda.Entidades.Productos", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int?>("PlanesId")
+                    b.Property<int>("MascotaId")
                         .HasColumnType("int");
 
                     b.Property<string>("descripcion")
@@ -79,15 +43,46 @@ namespace ApiTienda.Migrations
                     b.Property<string>("imagen")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("mascotasId")
+                        .HasColumnType("int");
+
                     b.Property<double>("precio")
                         .HasMaxLength(50)
                         .HasColumnType("float");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlanesId");
+                    b.HasIndex("mascotasId");
 
-                    b.ToTable("Productos");
+                    b.ToTable("Citas");
+                });
+
+            modelBuilder.Entity("ApiTienda.Entidades.Mascotas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("imagen")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("nombreProp")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("raza")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Mascotas");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -286,11 +281,13 @@ namespace ApiTienda.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ApiTienda.Entidades.Productos", b =>
+            modelBuilder.Entity("ApiTienda.Entidades.Citas", b =>
                 {
-                    b.HasOne("ApiTienda.Entidades.Planes", null)
-                        .WithMany("productosPlan")
-                        .HasForeignKey("PlanesId");
+                    b.HasOne("ApiTienda.Entidades.Mascotas", "mascotas")
+                        .WithMany("MascotaCita")
+                        .HasForeignKey("mascotasId");
+
+                    b.Navigation("mascotas");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -344,9 +341,9 @@ namespace ApiTienda.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ApiTienda.Entidades.Planes", b =>
+            modelBuilder.Entity("ApiTienda.Entidades.Mascotas", b =>
                 {
-                    b.Navigation("productosPlan");
+                    b.Navigation("MascotaCita");
                 });
 #pragma warning restore 612, 618
         }

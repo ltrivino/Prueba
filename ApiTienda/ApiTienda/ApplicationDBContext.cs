@@ -15,10 +15,8 @@ namespace ApiTienda
         {
             base.OnModelCreating(modelBuilder);
         }
-
-
-        public DbSet<Productos> Productos { get; set; }
-        public DbSet<Planes> Planes { get; set; }
+        public DbSet<Mascotas> Mascotas { get; set; }
+        public DbSet<Citas> Citas { get; set; }
 
 
     }

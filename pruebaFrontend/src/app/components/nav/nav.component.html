@@ -1,0 +1,41 @@
+<div class="show-mobile">
+  <div>
+    <button (click)="toggleMenu()">
+      <img src="./assets/svg/icon_menu.svg" alt="menu">
+    </button>
+    <a href="">
+      <h1>PruebaLogo</h1>
+    </a>
+    <div class="cart">
+      <a href="">
+        <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
+      </a>
+      <span class="counter">{{ counter }}</span>
+    </div>
+
+  </div>
+  <div class="side-menu" [class.active]="activeMenu">
+    <button (click)="toggleMenu()">Close</button>
+  </div>
+</div>
+<div class="hide-mobile">
+  <div>
+    <nav>
+      <a class="logo" href="">
+        <h1>PruebaLogo</h1>
+      </a>
+      <ul>
+        <li><a routerLinkActive="active" routerLink="citas">Citas</a></li>
+      </ul>
+      <ul>
+        <li><a routerLinkActive="active" routerLink="mascotas">Macotas</a></li>
+      </ul>
+    </nav>
+    <div class="info">
+      <div class="account">
+          <a routerLink="/profile">{{ profile }} </a>
+          <button (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
